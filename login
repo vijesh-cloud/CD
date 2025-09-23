@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Login & Register</title>
   <style>
     body {
       margin: 0;
@@ -15,19 +15,19 @@
       justify-content: center;
       align-items: center;
     }
-    .login-container {
+    .container {
       background: #fff;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
-      width: 300px;
+      width: 320px;
       text-align: center;
     }
-    .login-container h2 {
+    h2 {
       margin-bottom: 20px;
       color: #333;
     }
-    .login-container input {
+    input {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -36,10 +36,10 @@
       outline: none;
       font-size: 14px;
     }
-    .login-container input:focus {
+    input:focus {
       border-color: #6a11cb;
     }
-    .login-container button {
+    button {
       width: 100%;
       padding: 10px;
       background: #6a11cb;
@@ -50,32 +50,63 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-    .login-container button:hover {
+    button:hover {
       background: #2575fc;
     }
-    .login-container p {
+    p {
       margin-top: 15px;
       font-size: 14px;
     }
-    .login-container a {
+    a {
       color: #6a11cb;
       text-decoration: none;
+      cursor: pointer;
     }
-    .login-container a:hover {
+    a:hover {
       text-decoration: underline;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form>
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="#">Sign Up</a></p>
+  <div class="container">
+    <!-- Login Form -->
+    <div id="login-form">
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a onclick="toggleForm('register')">Sign Up</a></p>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="hidden">
+      <h2>Register</h2>
+      <form>
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a onclick="toggleForm('login')">Login</a></p>
+    </div>
   </div>
+
+  <script>
+    function toggleForm(form) {
+      if (form === 'register') {
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
+      } else {
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.remove('hidden');
+      }
+    }
+  </script>
 </body>
 </html>
-
